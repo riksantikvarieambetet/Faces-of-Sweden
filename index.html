@@ -1,0 +1,124 @@
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="js/photoswipe.min.js"></script>
+    <script src="js/photoswipe-ui-default.min.js"></script>
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mate:400,400i" rel="stylesheet">
+    <link href="css/photoswipe.css" rel="stylesheet">
+    <link href="css/default-skin.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>Faces of Sweden</title>
+    <meta name="description" content="Interactive timeline for exploring portraits in the Nordic Museum">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@OliviaFVane">
+    <meta name="twitter:title" content="Faces of Sweden">
+    <meta name="twitter:description" content="Explore faces and costume through time">
+    <meta name="twitter:image" content="tw_card.png">
+</head>
+
+<body style="background: #161616;">
+
+    <div class="Title_wrapper" style="background-color: #01636391; width: 435; margin-left: -10; margin-top: 20; padding-left: 50;">
+        <h1 style="padding-top: 10;">Faces of Sweden</h1>
+        <h2 style="padding-bottom:10" id="subtitle">Explore faces and costume through time with portraits in the Nordic Museum. <span id="Modal_Btn" style='font-size: 16; border-bottom: 0.5px solid rgba(255, 255, 255, 0.7);'>(More info)</span></h2>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Portraits from the past can tell us a lot. What did people wear? What sort of people were painted? How did they want to be presented? Use this interactive timeline to cut through time, compare different periods and see how clothes, hairstyles and the style of portraiture changes.</p>
+            <p>‘Faces of Sweden’ showcases 785 <a href="https://digitaltmuseum.se/search/?q=portr%C3%A4tt+tavla&amp;aq=owner%3F%3A%22S-NM%22" target="_blank">portraits</a> (mostly oil paintings but also prints, silhouettes, photographs) dating between 1570 - 2003 from the <a href="https://www.nordiskamuseet.se/" target="_blank">Nordic Museum</a>, Stockholm.</p>
+            <p>Design/development: <a href="https://www.oliviavane.co.uk/" target="_blank">Olivia Vane</a> for <a href="https://www.raa.se/in-english/" target="_blank">Swedish National Heritage Board</a></p>
+        </div>
+
+    </div>
+    <div id="container">
+        <div id="loader"></div>
+    </div>
+    <div id="cover-spin">
+        <p style="font-family: 'Mate'; color: white; font-size: 20px; text-align: center; display:block; position:absolute; top:45%; width:100%;">Fetching portraits...</p>
+    </div>
+
+    <div id="viz_wrapper"></div>
+    <div id="tile_viz_wrapper">
+        <h2 id="tile_viz_header"></h2>
+    </div>
+    <!-- LIGHTBOX -->
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="js/script_timeline.js"></script>
+</body>
