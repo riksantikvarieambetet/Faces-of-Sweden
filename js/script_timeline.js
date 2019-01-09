@@ -329,7 +329,7 @@ function drawVisualisation(data) {
             d3.select('.shuffle_box_text.' + timeline.id).append('tspan').text(" of ");
             d3.select('.shuffle_box_text.' + timeline.id).append('tspan').attr('id', 'shuffle_text_total').attr('class', timeline.id);
 
-            d3.select('.shuffle_box_wrapper.' + timeline.id).append('svg:image').attr('class', 'shuffle ' + timeline.id).attr('xlink:href', '../css/shuffle2.png').attr('width', 20).attr('height', 30).attr('transform', 'translate(' + shuffle_image_x + ',0)');
+            d3.select('.shuffle_box_wrapper.' + timeline.id).append('svg:image').attr('class', 'shuffle ' + timeline.id).attr('xlink:href', 'css/shuffle2.png').attr('width', 20).attr('height', 30).attr('transform', 'translate(' + shuffle_image_x + ',0)');
 
             var shuffle_box_x = timeline.x + timeline.width - shuffle_box_width,
                 shuffle_box_timeline_padding = 5,
