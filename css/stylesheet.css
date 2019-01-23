@@ -260,3 +260,15 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
+
+#email_link {
+    text-decoration: none;
+    background-color: #016363;
+    color: white;
+    padding: 2px;
+}
+
+#modal2-content {
+  width: 90%;
+    font-size: 2.5em;
+}
